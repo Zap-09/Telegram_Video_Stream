@@ -1,0 +1,49 @@
+#entries-container {
+        padding: 20px;
+        color: #e3e3e3;
+    }
+
+    .category-group {
+        margin-bottom: 40px;
+        border-bottom: 1px solid #444;
+    }
+
+    .creator-block {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .entry-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .entry-card {
+        background: #1e1e1e;
+        padding: 15px;
+        border-radius: 8px;
+        min-width: 250px;
+        border: 1px solid #333;
+        text-transform: capitalize;
+    }
+
+    .video-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .video-link {
+        color: #bb86fc;
+        text-decoration: none;
+        font-size: 0.9em;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .video-link:hover {
+        color: #ffffff;
+    }
+    h3{
+        text-transform:capitalize
+    }

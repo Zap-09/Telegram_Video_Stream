@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>All entries</title>
+{% endblock %}
+
+{% block head %}
+<script src="{{url_for('static',filename='js/all_entries.js')}}" defer></script>
+<link rel="stylesheet" href="{{url_for('static',filename='css/all_entries.css')}}">
+<style>
+    /* Styling for the Creator Links */
+    .creator-link {
+        color: #bb86fc; /* Matching your video link color */
+        text-decoration: none;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .creator-link:hover {
+        color: #ffffff;
+        padding-left: 5px; /* Subtle nudge effect on hover */
+        text-decoration: underline;
+    }
+
+    .creator-block h3 {
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<main id="entries-container">
+</main>
+{% endblock %}

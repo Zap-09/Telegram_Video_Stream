@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Creator</title>
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='/css/all_entries.css')}}">
+<script>
+    const CREATOR_SLUG = "{{ creator_slug }}";
+</script>
+<script src="{{url_for('static',filename='js/creator_page.js')}}" defer></script>
+{% endblock %}
+
+{% block main %}
+<main id="entries-container">
+    <h1 id="creator-name" style="text-transform: capitalize;"></h1>
+    <div id="entry-display" class="entry-grid">
+    </div>
+</main>
+{% endblock %}

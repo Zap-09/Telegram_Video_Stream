@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Video</title>
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/video.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/video-controls.css')}}">
+<script src="{{url_for('static',filename='js/video.js')}}" defer></script>
+<script src="{{url_for('static',filename='js/video-controls.js')}}" defer></script>
+<script>
+
+</script>
+{% endblock %}
+
+{% block main %}
+<div id="video-page" data-message-id="{{ message_id }}" class="video-layout">
+
+    <div class="video-content">
+        <div class="player-container">
+
+            <video id="main-player">
+                <source src="/api/video/{{ message_id }}" type="video/mp4">
+            </video>
+            <div class="controls">
+                <div class="videoProgressBar">
+                    <div id="progress" class="progress">
+                        <div id="progress-buffer" class="progress-buffer"></div>
+                        <div id="progress-played" class="progress-played"></div>
+                    </div>
+                </div>
+                <div class="control-btns">
+                    <div class="left-controls">
+                        <button id="pausePlay" class="svg-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#e3e3e3">
+                                <path d="M320-200v-560l440 280-440 280Z" />
+                            </svg>
+                        </button>
+                        <div class="volumeBox">
+                            <button id="volumeBtn" class="svg-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#e3e3e3">
+                                    <path
+                                        d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z" />
+                                </svg>
+                            </button>
+                            <div class="volumeBarBox">
+                                <div class="volumeBar">
+                                    <div class="volumeBarValue"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="video-time">
+                            <span class="current-time">00:00</span>:
+                            <span class="total-time">00:00</span>
+                        </div>
+                    </div>
+                    <div class="right-controls">
+                        <button id="clearView" class="svg-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#e3e3e3">
+                                <path
+                                    d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm360-80v-560H200v560h360Z" />
+                            </svg>
+                        </button>
+                        <button id="fullScreenBtn" class="svg-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                fill="#e3e3e3">
+                                <path
+                                    d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="floatingPlayBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#e3e3e3">
+                    <path d="M320-200v-560l440 280-440 280Z" />
+                </svg>
+            </div>
+            <div class="backward">
+                <span id="b">
+                    
+                </span>
+            </div>
+            <div class="forward">
+                <span id="f">
+                    
+                </span>
+            </div>
+        </div>
+
+        <div class="video-details">
+            <div class="title-row">
+                <h1 id="video-title">Loading title...</h1>
+
+                <div class="action-buttons">
+                    <button class="action-btn fav-btn" title="Favorite">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path
+                                d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" />
+                        </svg>
+                    </button>
+
+                    <button class="action-btn" title="Download" id="download">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path
+                                d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="metadata">
+                <span id="creator-name"></span> • <span id="entry-name"></span>
+            </div>
+            <div class="video-description-section">
+                <div id="description-container" class="description-wrapper collapsed">
+                    <p id="video-description">Loading description...</p>
+                    <div class="description-gradient"></div>
+                </div>
+                <button id="desc-toggle" class="desc-toggle-btn">Show More</button>
+
+                <div class="tags-container" id="tags-box">
+                </div>
+            </div>
+        </div>
+        <div class="more-from-container">
+            <h3 class="section-title">More from <span id="creator-label"></span></h3>
+            <div id="creator-entries-list" class="creator-list-vertical">
+            </div>
+        </div>
+    </div>
+
+    <aside class="related-sidebar">
+        <h3>Up Next</h3>
+        <div id="related-list"></div>
+    </aside>
+</div>
+{% endblock %}

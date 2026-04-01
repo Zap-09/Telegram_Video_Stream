@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Advanced Search</title>
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/advanced_search.css')}}">
+    <script src="{{url_for('static',filename='js/advanced_search.js')}}" defer></script>
+{% endblock %}
+
+{% block main %}
+<main class="advanced-search-container">
+    <section class="search-panel">
+        <h1 class="panel-title">Advanced Filters</h1>
+        
+        <form id="advanced-search-form" class="filter-grid">
+            <div class="input-group">
+                <label for="title">Video Title</label>
+                <div class="suggest-wrapper">
+                    <input type="text" id="title" name="title" autocomplete="off" placeholder="">
+                    <div class="suggestion-box" id="suggest-title"></div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="creator">Creator Name</label>
+                <div class="suggest-wrapper">
+                    <input type="text" id="creator" name="creator" autocomplete="off" placeholder="">
+                    <div class="suggestion-box" id="suggest-creator"></div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="series">Series</label>
+                <div class="suggest-wrapper">
+                    <input type="text" id="series" name="series" autocomplete="off" placeholder="">
+                    <div class="suggestion-box" id="suggest-series"></div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="tags">Tags (comma separated)</label>
+                <div class="suggest-wrapper">
+                    <input type="text" id="tags" name="tags" autocomplete="off" placeholder="">
+                    <div class="suggestion-box" id="suggest-tags"></div>
+                </div>
+            </div>
+
+<div class="form-footer">
+    <p id="form-error" class="error-msg"></p>
+    <div style="display: flex; gap: 15px;">
+        <button type="button" id="clear-filters" class="btn-secondary">Clear All</button>
+        <button type="submit" id="submit-advanced">
+            <span>Search Database</span>
+            </button>
+    </div>
+</div>
+        </form>
+    </section>
+
+    <hr class="divider">
+
+    <section class="results-panel">
+        <div id="advanced-results-info">
+            </div>
+        
+        <div id="advanced-results-grid" class="results-grid">
+            <div class="initial-message">
+                <p>Fill in at least one field to begin your deep search.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

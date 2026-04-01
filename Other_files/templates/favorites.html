@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>My Favorites</title>
+{% endblock %}
+
+{% block head %}
+<script src="{{url_for('static',filename='js/favorites.js')}}" defer></script>
+<link rel="stylesheet" href="{{url_for('static',filename='css/all_entries.css')}}">
+<style>
+    .fav-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .fav-count-badge {
+        background: #bb86fc;
+        color: black;
+        padding: 2px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 50px;
+        background: #121212;
+        border: 2px dashed #333;
+        border-radius: 12px;
+        color: #888;
+        font-size: 1.2rem;
+    }
+
+    .fav-header h1 {
+        color: #bb86fc;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<main id="favorites-container">
+    <div class="fav-header">
+        <h1>Your Favorites</h1>
+        <span id="fav-count" class="fav-count-badge">0</span>
+    </div>
+    <div id="entries-container">
+    </div>
+</main>
+{% endblock %}

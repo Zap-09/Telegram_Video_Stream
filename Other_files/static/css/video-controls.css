@@ -1,0 +1,245 @@
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.controls {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 40px);
+    margin: 0 auto;
+}
+
+@media (max-width:600px) {
+    .controls {
+        top: 85%
+    }
+}
+
+.videoProgressBar {
+    width: 100%;
+}
+
+.left-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-time {
+    border-radius: 20px;
+    border: solid 2px whitesmoke;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+
+}
+
+
+.control-btns {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.svg-btn {
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.svg-btn:hover {
+    background-color: rgba(255, 255, 255, 0.146);
+}
+
+
+.progress {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: #444;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.progress-buffer {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: #777;
+    border-radius: 3px;
+
+}
+
+.progress-played {
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: #a65dff;
+    border-radius: 3px;
+
+}
+
+.video-time {
+    display: inline;
+}
+
+/* Container for the button and the bar */
+.volumeBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.1s ease;
+}
+
+/* The bar container starts hidden (width 0) */
+.volumeBarBox {
+    position: absolute;
+    left: 30px;
+    /* Sits next to the volume icon */
+    height: 100%;
+    width: 0;
+    overflow: hidden;
+    /* Hides the bar when width is 0 */
+    background-color: #111;
+    /* Match your player theme to cover text */
+    display: flex;
+    align-items: center;
+    transition: width 0.3s ease, padding 0.3s ease;
+    z-index: 10;
+    /* Ensures it stays above the video-time */
+    border-radius: 20px;
+}
+
+
+
+
+/* When active, expand the width to cover the time */
+.volumeBox.volume-active .volumeBarBox {
+    width: 120px;
+    /* Adjust this to cover your specific timestamp width */
+    padding: 0 10px;
+}
+
+.volumeBar {
+    width: 100%;
+    height: 6px;
+    background-color: #777;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.volumeBarValue {
+    transition: 0.3s all;
+    height: 100%;
+    background-color: #bb86fc;
+    width: 0%;
+    /* JS will control this */
+    border-radius: 20px;
+    pointer-events: none;
+    /* Let clicks pass through to the volumeBar */
+}
+
+.player-container:fullscreen .control-btns,
+.player-container:-webkit-full-screen .control-btns {
+    position: absolute;
+    /* Give it some padding from the edge of the phone */
+    z-index: 1000 !important;
+    /* Max value */
+    display: flex !important;
+    /* Force it to show */
+}
+
+.floatingPlayBtn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #8781814f;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.floatingPlayBtn:hover {
+    filter: brightness(1.2);
+    opacity: 1;
+}
+
+.floatingPlayBtn:active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.backward {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(-10%, -50%);
+    height: 100%;
+    width: 100%;
+    clip-path: inset(20% 0 20% 0);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forward {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(10%, -50%);
+    height: 100%;
+    width: 100%;
+    clip-path: inset(20% 0 20% 0);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forward span{
+    top: 50%;
+    left:20%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    user-select: none;
+}
+
+.backward span{
+    top: 50%;
+    right:20%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    user-select: none;
+}

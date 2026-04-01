@@ -1,0 +1,542 @@
+body {
+    overflow-x: hidden;
+}
+
+.video-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 20px;
+    width: auto;
+    max-width: 1400px;
+    margin: 0 auto;
+    color: #e3e3e3;
+    box-sizing: border-box;
+}
+
+.video-content {
+    flex: 1.5;
+    max-width: 950px;
+    width: 100%;
+}
+
+.player-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#main-player {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.video-details {
+    margin-top: 20px;
+    padding: 0 5px;
+}
+
+.video-details h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.metadata {
+    font-size: 0.95rem;
+    color: #aaa;
+    display: flex;
+    gap: 10px;
+}
+
+#creator-name {
+    color: #bb86fc;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+#entry-name {
+    text-transform: capitalize;
+}
+
+.related-sidebar {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-sidebar h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+#related-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.related-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 10px;
+    text-decoration: none;
+    color: #ccc;
+    border-radius: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.related-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding-left: 15px;
+}
+
+.play-icon-small {
+    font-size: 0.7rem;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.related-item:hover .play-icon-small {
+    color: #bb86fc;
+}
+
+.related-info {
+    flex: 1;
+}
+
+.related-info h4 {
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.related-info p {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 4px;
+    text-transform: capitalize;
+}
+
+
+@media (max-width: 1100px) {
+    .video-layout {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .video-content {
+        max-width: 100%;
+    }
+
+    .related-sidebar {
+        width: 100%;
+        margin-top: 20px;
+        border-left: none;
+    }
+
+    .video-details h1 {
+        font-size: 1.1rem;
+        /* Smaller title on mobile */
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    /* Metadata row (Creator name • Entry name) */
+    .metadata {
+        font-size: 0.8rem;
+        /* Smaller metadata */
+        color: #888;
+    }
+
+    /* "More from [Creator Name]" Section Header */
+    .section-title {
+        font-size: 0.9rem;
+        /* Smaller section headers */
+    }
+
+    /* Adjust the vertical spacing of the details area */
+    .video-details {
+        margin-top: 15px;
+    }
+}
+
+.title-row {
+    display: flex;
+    justify-content: space-between;
+    /* Pushes title left, buttons right */
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+#video-title {
+    flex: 1;
+    /* Allows title to take available space */
+    margin: 0;
+    /* Remove default margin to align with buttons */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* --- SHARED STYLES (All buttons) --- */
+.action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #e3e3e3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.action-btn svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s ease;
+    fill: currentColor;
+}
+
+/* --- FAVORITE BUTTON ONLY --- */
+.fav-btn svg {
+    /* Overriding default fill for the "Outline" look */
+    fill: none;
+    stroke: #e3e3e3;
+    stroke-width: 60px;
+}
+
+.fav-btn:hover svg {
+    stroke: #bb86fc;
+}
+
+/* State when clicked/active */
+.fav-btn:active svg,
+.fav-btn.is-active svg {
+    fill: #bb86fc;
+    stroke: #bb86fc;
+}
+
+.action-btn:not(.fav-btn):hover svg {
+    fill: #bb86fc;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* --- Optimized Mobile Logic --- */
+@media (max-width: 600px) {
+    .entries-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        max-height: 2000px;
+        /* Large enough to fit any list */
+        opacity: 1;
+    }
+
+    /* When collapsed, we limit height to roughly the first item (~70px) */
+    .entries-wrapper.collapsed {
+        max-height: 75px;
+    }
+
+    /* Fade out the bottom items slightly when collapsed for a better look */
+    .entries-wrapper.collapsed .creator-entry-list-item:not(:first-child) {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .show-more-btn {
+        display: block;
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px;
+        background: rgba(187, 134, 252, 0.08);
+        border: 1px solid rgba(187, 134, 252, 0.3);
+        color: #bb86fc;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .title-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Cleanup: Remove horizontal-scroll styles if you aren't using them anymore */
+
+.section-title {
+    font-size: 1.1rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+#creator-label {
+    color: #bb86fc;
+}
+
+.horizontal-scroll {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #444 transparent;
+}
+
+/* Custom Scrollbar for Chrome/Safari */
+.horizontal-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+
+
+.more-from-container {
+    display: none;
+    /* Hidden only if JS finds 0 other entries */
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.creator-list-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.creator-entry-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    margin-bottom: 0.5rem;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #e3e3e3;
+    transition: all 0.2s ease;
+}
+.creator-entry-list-item:last-child{
+    margin-bottom: 0rem;
+}
+
+.creator-entry-list-item:hover {
+    background: #252525;
+    border-color: #bb86fc;
+    transform: translateX(5px);
+}
+
+.entry-info-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.entry-type-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #bb86fc;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.entry-title-text {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.entry-count-pill {
+    font-size: 0.8rem;
+    color: #888;
+    background: #2a2a2a;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.no-related {
+    padding: 30px 10px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px dashed #333;
+    margin-top: 10px;
+}
+
+.video-description-section {
+    display: block;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: left;
+    /* Ensures everything starts from the left */
+}
+
+.description-wrapper {
+    position: relative;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 1000px;
+    /* Large enough for expanded state */
+}
+
+.description-wrapper.collapsed {
+    max-height: 4.2em;
+    /* Exactly 2 lines based on 1.5 line-height + padding */
+}
+
+.description-wrapper.collapsed #video-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* Increased slightly to 3 lines because of the added Source field */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#video-description {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #d1d1d1;
+    white-space: pre-wrap;
+    text-align: left;
+    /* Explicit alignment */
+}
+
+/* The "Fade" effect for collapsed text */
+.description-wrapper.collapsed .description-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    /* Covers roughly the second line's bottom half */
+    background: linear-gradient(to bottom, transparent, rgba(20, 20, 20, 1));
+    pointer-events: none;
+}
+
+.desc-toggle-btn {
+    background: none;
+    border: none;
+    color: #bb86fc;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tags Box */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tag-pill {
+    font-size: 0.75rem;
+    color: #bb86fc;
+    background: rgba(187, 134, 252, 0.1);
+    padding: 3px 10px;
+    border-radius: 15px;
+    /* Rounder "pill" look */
+    text-decoration: none;
+    border: 1px solid rgba(187, 134, 252, 0.2);
+    transition: 0.2s;
+}
+
+.tag-pill:hover {
+    background: #bb86fc;
+    color: #000;
+}
+
+.source-content {
+    display: block;
+    /* Takes up full width, preventing "floating" */
+    text-align: left;
+    /* Forces text to the start of the line */
+    width: 100%;
+    /* Ensures it fills the container */
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    clear: both;
+    /* Prevents any floating elements from pushing it */
+}
+
+.source-content strong {
+    display: inline-block;
+    /* Keeps the label on the same line as the URL */
+    margin-right: 5px;
+    /* Small gap between label and value */
+}
+
+.source-content span {
+    display: inline;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    #video-description {
+        font-size: 0.85rem;
+    }
+}

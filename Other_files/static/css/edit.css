@@ -1,0 +1,102 @@
+/* edit.css */
+
+#existing-videos .file-item {
+    border-left: 3px solid #bb86fc;
+}
+
+/* Remove button (slightly stronger for edit mode) */
+.remove-existing {
+    color: #ff5252;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.remove-existing:hover {
+    text-decoration: underline;
+}
+
+.suggest-item.selected {
+    background: #bb86fc;
+    color: #000;
+}
+
+.input-group{
+    position: relative;
+}
+
+.suggest-wrapper {
+    align-self: start;
+    position: relative;
+    width: 100%;
+}
+
+.suggestion-box {
+    position: absolute;
+    top: calc(100% + 5px);
+    /* Small gap */
+    left: 0;
+    width: 100%;
+    /* Matches parent wrapper width */
+    background: #1a1a1a;
+    border: 1px solid #bb86fc;
+    border-radius: 8px;
+    z-index: 1000;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+.suggestion-box:active{
+    position: relative;
+}
+
+.suggest-item.selected {
+    background: #333;
+    color: #bb86fc;
+    border-left: 4px solid #bb86fc;
+}
+
+.suggestion-box.active {
+    display: block;
+}
+
+
+.suggest-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 0.9rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.suggest-item:hover {
+    background: #bb86fc;
+    color: #000;
+}
+
+/* Scrollbar styling for the box */
+.suggestion-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.suggestion-box::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+.json-preview-container {
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#json-preview {
+    color: #a5d6ff;; /* Matrix/Terminal Green */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

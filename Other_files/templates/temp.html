@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #playPauseBtn {
+            background-color: #222;
+            color: #e3e3e3;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s ease;
+        }
+
+
+        /* Logic for Toggling Icons */
+        #playPauseBtn.playing .icon-play {
+            display: none;
+        }
+
+        #playPauseBtn.paused .icon-pause {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="playPauseBtn" class="paused">
+        <span class="icon-play">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="currentColor">
+                <path d="M320-200v-560l440 280-440 280Z" />
+            </svg>
+        </span>
+
+        <span class="icon-pause">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="currentColor">
+                <path d="M560-200v-560h160v560H560Zm-320 0v-560h160v560H240Z" />
+            </svg>
+        </span>
+    </button>
+    <script>
+        const btn = document.getElementById('playPauseBtn');
+
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('paused')) {
+                btn.classList.remove('paused');
+                btn.classList.add('playing');
+                console.log("Playing..."); // Add your play logic here
+            } else {
+                btn.classList.remove('playing');
+                btn.classList.add('paused');
+                console.log("Paused."); // Add your pause logic here
+            }
+        });
+    </script>
+</body>
+
+</html>

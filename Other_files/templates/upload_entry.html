@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Upload New Entry</title>
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/upload_entry.css')}}">
+<script src="{{url_for('static',filename='js/upload_entry.js')}}" defer></script>
+{% endblock %}
+
+{% block main %}
+<main class="upload-container">
+    <section class="upload-card">
+        <h1 class="page-title">Database Upload</h1>
+
+        <form id="upload-form">
+            <div class="form-section">
+                <h2 class="section-label">1. Classification</h2>
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label for="category"><div class="label">Category</div></label>
+                        <div class="suggest-wrapper">
+                            <input type="text" name="category" id="category" autocomplete="off" required>
+                            <div class="suggestion-box" id="suggest-category"></div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="creator_pretty"><div class="label">Creator Name</div></label>
+                        <div class="suggest-wrapper">
+                            <input type="text" name="creator_pretty" id="creator_pretty" autocomplete="off" required>
+                            <div class="suggestion-box" id="suggest-creator_pretty"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-label">2. Entry Details</h2>
+                <div class="input-group">
+                    <label for="entry_pretty"><div class="label">Entry Title</div></label>
+                    <div class="suggest-wrapper">
+                        <input type="text" name="entry_pretty" id="entry_pretty" autocomplete="off" required>
+                        <div class="suggestion-box" id="suggest-entry_pretty"></div>
+                    </div>
+                </div>
+
+                <div class="toggle-group">
+                    <label class="switch-container">
+                        <input type="checkbox" name="is_series" id="is_series_toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-text">This is a Multi-Part Series</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="tags"><div class="label">Tags</div></label>
+                    <div class="suggest-wrapper">
+                        <input type="text" name="tags" id="tags" autocomplete="off">
+                        <div class="suggestion-box" id="suggest-tags"></div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="input-group">
+                        <label for="source"><div class="label">Source</div></label>
+                        <input type="text" name="source" id="source" placeholder="">
+                    </div>
+                    <div class="input-group">
+                        <label for="description"><div class="label">Description (Optional)</div></label>
+                        <textarea name="description" id="description" rows="1"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-label">3. Content & Files</h2>
+
+                <div id="drop-zone" class="drop-zone">
+                    <span class="drop-zone__prompt">Drag & Drop Videos or Click to Upload</span>
+                    <input type="file" name="videos_raw" id="video_input" multiple accept="video/*"
+                        class="drop-zone__input">
+                </div>
+
+                <div id="series-naming-controls" style="display: none; margin-top: 20px;">
+                    <div class="input-group">
+                        <label for="base_file_name"><div class="label">Series Base Name</div></label>
+                        <input type="text" id="base_file_name" placeholder="">
+                    </div>
+                </div>
+
+                <div id="file-list-display" class="file-list"></div>
+            </div>
+
+            <div class="preview-section">
+                <button type="button" id="toggle-json-preview" class="btn-secondary">Show JSON Preview</button>
+                <pre id="json-preview-box" class="json-preview" style="display: none;"></pre>
+            </div>
+            <div id="progress-container"
+                style="display: none; width: 100%; background: #222; border-radius: 10px; margin: 10px 0;">
+                <div id="progress-bar"
+                    style="width: 0%; height: 10px; background: #bb86fc; border-radius: 10px; transition: width 0.1s;">
+                </div>
+            </div>
+            <div class="form-footer">
+                <p id="upload-status" class="status-message"></p>
+                <button type="submit" class="btn-primary" id="submit-btn">
+                    Confirm & Save to Database
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

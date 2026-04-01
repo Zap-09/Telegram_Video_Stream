@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Search Results for "{{ q }}"</title>
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/search.css')}}">
+    <script>
+        const SEARCH_QUERY = "{{ q|safe }}";
+    </script>
+    <script src="{{url_for('static',filename='js/search.js')}}" defer></script>
+{% endblock %}
+
+{% block main %}
+    <main id="search-results-page">
+        <div class="search-header">
+            <h1>Results for: <span class="highlight">{{ q }}</span></h1>
+            <p id="result-count">Searching database...</p>
+        </div>
+
+        <div id="results-container" class="results-grid">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Deep scanning entries...</p>
+            </div>
+        </div>
+    </main>
+{% endblock %}

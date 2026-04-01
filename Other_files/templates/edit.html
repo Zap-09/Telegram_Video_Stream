@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit Entry</title>
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/upload_entry.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/edit.css')}}">
+<script src="{{url_for('static', filename='js/edit.js')}}"></script>
+<script>
+    const entryId = "{{ message_id }}";
+</script>
+{% endblock %}
+
+{% block main %}
+<main class="container">
+    <form id="edit-form" enctype="multipart/form-data">
+
+        <div class="form-section">
+            <h2 class="section-label">1. Classification</h2>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label for="category">Category</label>
+                    <div class="suggest-wrapper">
+                        <input type="text" id="category" name="category_name" placeholder="" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="creator_pretty">Creator Name</label>
+                    <input type="text" id="creator_pretty" name="creator_name">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-label">2. Entry Details</h2>
+            <div class="input-group">
+                <label for="entry_pretty">Title</label>
+                <input type="text" id="entry_pretty" name="entry_name" required>
+            </div>
+            <div class="input-group">
+                <label for="tags">Tags (comma separated)</label>
+                <input type="text" id="tags" name="tags">
+            </div>
+            <div class="grid-2">
+                <div class="input-group">
+                    <label for="source">Source</label>
+                    <input type="text" id="source" name="source">
+                </div>
+                <div class="input-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-label">3. Series & Naming</h2>
+            <div class="toggle-group">
+                <label class="switch-container">
+                    <input type="checkbox" name="is_series" id="is_series_toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-text">This is a Multi-Part Series</span>
+            </div>
+
+            <div id="series-naming-controls" style="margin-top: 15px;">
+                <div class="input-group">
+                    <label for="base_file_name">Base File Name / Video Title</label>
+                    <input type="text" id="base_file_name" placeholder="Enter the desired file name here...">
+                    <small style="color: #888;">This will rename the existing videos in the JSON below.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-label">4. Existing Videos</h2>
+            <p class="section-help">Click 'Remove' to mark for deletion. Changes apply after saving.</p>
+            <div id="existing-videos" class="file-list">
+                <p class="loading-text">Loading videos...</p>
+            </div>
+        </div>
+
+
+        <div class="form-section">
+            <h2 class="section-label">5. Data Preview (JSON)</h2>
+            <div class="json-preview-container">
+                <pre id="json-preview">{}</pre>
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <div id="status-msg" class="status-message"></div>
+            <div style="display:flex; gap:15px; justify-content: flex-end;">
+                <button type="button" class="btn-secondary" id="delete-entry">Delete Entry</button>
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}

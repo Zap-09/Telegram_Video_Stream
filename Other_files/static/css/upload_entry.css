@@ -1,0 +1,580 @@
+.upload-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.upload-card {
+    background: #121212;
+    border: 1px solid #2c2c2c;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.page-title {
+    color: #bb86fc;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #222;
+}
+
+.section-label {
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    color: #eee;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.label{
+    cursor: text;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    background: #1e1e1e;
+    border: 2px solid #333;
+    padding: 12px;
+    border-radius: 8px;
+    color: #fff;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #bb86fc;
+    outline: none;
+}
+
+/* Series Toggle */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.switch-container {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch-container input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #bb86fc;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.video-item {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px dashed #444;
+}
+
+.grid-v {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: #bb86fc;
+    color: #000;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    /* Smooth transition for all properties */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+/* Hover State: Lift up and Glow */
+.btn-primary:hover {
+    background: #cfabff;
+    /* Slightly lighter lilac */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(187, 134, 252, 0.4);
+}
+
+/* Clicking (Active) State: Press down */
+.btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: #a370e0;
+    /* Slightly darker to show pressure */
+    transition: all 0.1s;
+    /* Faster snap on click */
+}
+
+/* Focus State: For accessibility when using tab */
+.btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.5);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #bb86fc;
+    color: #bb86fc;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.series-item {
+    background: #1a1a1a;
+    padding: 12px 20px;
+    border-left: 3px solid #bb86fc;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#series-naming-controls {
+    background: rgba(187, 134, 252, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(187, 134, 252, 0.2);
+}
+
+.drop-zone {
+    max-width: 100%;
+    height: 150px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    color: #888;
+    border: 2px dashed #bb86fc;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+
+.drop-zone--over {
+    background: rgba(187, 134, 252, 0.1);
+    border-style: solid;
+}
+
+.drop-zone__input {
+    display: none;
+}
+
+.file-list {
+    margin-top: 15px;
+}
+
+.file-item {
+    background: #1a1a1a;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #222;
+    transition: border-color 0.2s;
+}
+
+.file-item:hover {
+    border-color: #444;
+}
+
+.file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.file-name {
+    font-size: 0.85rem;
+    color: #eee;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-size {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+/* The "X" Remove Button */
+.remove-file-btn {
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.remove-file-btn:hover {
+    color: #ff5252;
+    /* Red on hover */
+    background: rgba(255, 82, 82, 0.1);
+}
+
+.json-preview {
+    background: #000;
+    color: #00ff00;
+    /* Classic "code" green */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    overflow-x: auto;
+    border: 1px solid #333;
+}
+
+/* Container for the preview button and box */
+.preview-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed #333;
+}
+
+/* The Toggle Button Style */
+#toggle-json-preview {
+    background: transparent;
+    color: #888;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    /* Center it */
+}
+
+#toggle-json-preview:hover {
+    color: #bb86fc;
+    border-color: #bb86fc;
+    background: rgba(187, 134, 252, 0.05);
+}
+
+#toggle-json-preview:active {
+    transform: scale(0.98);
+}
+
+/* The JSON Code Box */
+#json-preview-box {
+    background: #0d0d0d;
+    /* Slightly darker than the card */
+    color: #a5d6ff;
+    /* Soft blue/cyan for a code look */
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    border: 1px solid #222;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    white-space: pre-wrap;
+    /* Wraps text if it's too long */
+    max-height: 400px;
+}
+
+/* Custom scrollbar for the JSON box */
+#json-preview-box::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#json-preview-box::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+#json-preview-box::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.form-footer p {
+    margin-bottom: 20px;
+}
+
+/* Wrapper for positioning */
+.suggest-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.suggest-wrapper input {
+    width: 100%;
+}
+
+/* Suggestion dropdown */
+.suggestion-box {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #bb86fc;
+    border-radius: 8px;
+    z-index: 1000;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Show dropdown */
+.suggestion-box.active {
+    display: block;
+}
+
+/* Individual item */
+.suggest-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 0.9rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Hover */
+.suggest-item:hover {
+    background: #bb86fc;
+    color: #000;
+}
+
+/* Keyboard selection */
+.suggest-item.selected {
+    background: #333;
+    color: #bb86fc;
+    border-left: 4px solid #bb86fc;
+}
+
+/* Scrollbar styling */
+.suggestion-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.suggestion-box::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+.progress-infinite {
+    animation: pulse 1.5s infinite;
+    width: 100% !important;
+}
+
+/* ---------- MOBILE RESPONSIVENESS ---------- */
+
+@media (max-width: 768px) {
+
+    .upload-container {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .upload-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .page-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Stack grids into 1 column */
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Inputs */
+    .input-group input,
+    .input-group textarea,
+    .input-group select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Section spacing */
+    .form-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .section-label {
+        font-size: 0.8rem;
+    }
+
+    /* Toggle spacing */
+    .toggle-group {
+        margin: 15px 0;
+        gap: 10px;
+    }
+
+    /* Drop zone */
+    .drop-zone {
+        height: 120px;
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+
+    /* File list */
+    .file-name {
+        max-width: 160px;
+        font-size: 0.8rem;
+    }
+
+    .file-size {
+        font-size: 0.65rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    #toggle-json-preview {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    /* JSON preview */
+    #json-preview-box {
+        font-size: 0.7rem;
+        padding: 12px;
+        max-height: 250px;
+    }
+
+    /* Suggestions dropdown */
+    .suggestion-box {
+        max-height: 180px;
+        font-size: 0.85rem;
+    }
+}
+
+
+/* ---------- EXTRA SMALL DEVICES ---------- */
+
+@media (max-width: 480px) {
+
+    .upload-card {
+        padding: 1.2rem;
+    }
+
+    .page-title {
+        font-size: 1.2rem;
+    }
+
+    .drop-zone {
+        height: 100px;
+        font-size: 0.8rem;
+    }
+
+    .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .file-name {
+        max-width: 100%;
+    }
+
+    .remove-file-btn {
+        align-self: flex-end;
+    }
+
+    /* Suggestion items tighter */
+    .suggest-item {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+}
